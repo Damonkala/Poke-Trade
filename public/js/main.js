@@ -4,6 +4,22 @@ $(document).ready(init);
 
 function init(){
   $('#createNewUser').click(createNewUser);
+  $('#login').click(login);
+}
+
+function login(event){
+  event.preventDefault();
+
+  var user = {};
+  user.username = $('#username').val();
+  user.password = $('#password').val();
+
+  $.post('/users/login', user)
+  .done(function(data){
+    console.log(data);
+  }).fail(function(err){
+    console.log(err);
+  });
 }
 
 function createNewUser(event){

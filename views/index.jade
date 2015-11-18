@@ -4,29 +4,41 @@ block css
   link(href='../css/style.css', rel='stylesheet')
 
 block content
-  form
-    .form-group
-      label(for='newUsername') Username
-      input#newUsername.form-control(type='text', placeholder='Choose a new username')
-    .form-group
-      label(for='newPassword') Password
-      input#newPassword.form-control(type='password', placeholder='Choose a new password')
-    .form-group
-      label(for='passconf') Confirm Password
-      input#passconf.form-control(type='password', placeholder='Confirm password')
-    .radio
-      label
-        input#bulbasaur(type='radio', name='startPokemon', value='bulbasaur', checked='')
-        |     Bulbasaur
-    .radio
-      label
-        input#charmander(type='radio', name='startPokemon', value='charmander')
-        |     Charmander
-    .radio
-      label
-        input#squirtle(type='radio', name='startPokemon', value='squirtle')
-        |     Squirtle
-    button.btn.btn-default#createNewUser(type='submit') Submit
+  .container-fluid
+    .row
+      .col-xs-6      
+        form
+          .form-group
+            label(for='newUsername') Username
+            input#newUsername.form-control(type='text', placeholder='Choose a new username')
+          .form-group
+            label(for='newPassword') Password
+            input#newPassword.form-control(type='password', placeholder='Choose a new password')
+          .form-group
+            label(for='passconf') Confirm Password
+            input#passconf.form-control(type='password', placeholder='Confirm password')
+          .radio
+            label
+              input#bulbasaur(type='radio', name='startPokemon', value='bulbasaur', checked='')
+              |     Bulbasaur
+          .radio
+            label
+              input#charmander(type='radio', name='startPokemon', value='charmander')
+              |     Charmander
+          .radio
+            label
+              input#squirtle(type='radio', name='startPokemon', value='squirtle')
+              |     Squirtle
+          button.btn.btn-default#createNewUser(type='submit') Submit
+      .col-xs-6      
+        form
+          .form-group
+            label(for='username') Username
+            input#username.form-control(type='text', placeholder='Enter your username')
+          .form-group
+            label(for='password') Password
+            input#password.form-control(type='password', placeholder='Enter your password')
+          button.btn.btn-default#login(type='submit') Login
 
 block js
   script(src='js/main.js')
