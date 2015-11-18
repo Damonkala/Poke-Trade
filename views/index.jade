@@ -1,5 +1,32 @@
 extends layout
 
+block css
+  link(href='../css/style.css', rel='stylesheet')
+
 block content
-  h1= title
-  p Welcome to #{title}
+  form
+    .form-group
+      label(for='newUsername') Username
+      input#newUsername.form-control(type='text', placeholder='Choose a new username')
+    .form-group
+      label(for='newPassword') Password
+      input#newPassword.form-control(type='password', placeholder='Choose a new password')
+    .form-group
+      label(for='passconf') Confirm Password
+      input#passconf.form-control(type='password', placeholder='Confirm password')
+    .radio
+      label
+        input#bulbasaur(type='radio', name='startPokemon', value='bulbasaur', checked='')
+        |     Bulbasaur
+    .radio
+      label
+        input#charmander(type='radio', name='startPokemon', value='charmander')
+        |     Charmander
+    .radio
+      label
+        input#squirtle(type='radio', name='startPokemon', value='squirtle')
+        |     Squirtle
+    button.btn.btn-default#createNewUser(type='submit') Submit
+
+block js
+  script(src='js/main.js')
