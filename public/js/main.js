@@ -16,7 +16,9 @@ function login(event){
 
   $.post('/users/login', user)
   .done(function(data){
-    console.log(data);
+    localStorage.usertoken = data.token;
+    localStorage.username = user.username;
+    
   }).fail(function(err){
     console.log(err);
   });

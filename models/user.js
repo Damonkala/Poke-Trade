@@ -13,6 +13,16 @@ var userSchema = Schema({
   startPokemon: {type: String, required: true }
 });
 
+userSchema.methods.token = function(){
+  var payload = {
+    username: this.username,
+    _id: this._id
+  }
+  var secret = process.env.JWT_SECRET;
+  var token = jwt.encode(payload, secret);
+  return token;
+}
+
 userSchema.statics.register = function(user, cb){
   var username = user.username;
   var password = user.password;
