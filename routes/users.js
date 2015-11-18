@@ -21,7 +21,8 @@ router.post('/login', function(req, res){
   User.authenticate(req.body, function(err, user){
     if (err) return res.status(400).send(err);
     var token = user.token();
-    res.send({token: token, user: user})
+    res.cookie('token', token)
+    res.send(user)
 
   });
 });

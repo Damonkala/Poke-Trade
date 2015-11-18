@@ -16,19 +16,11 @@ function login(event){
 
   $.post('/users/login', user)
   .done(function(data){
-    localStorage.usertoken = data.token;
-    localStorage.username = user.username;
-    $.ajax({
-      url: `/homes/${user.username}`,
-      method: 'get',
-      headers: { Authorization: "Bearer " + localStorage.usertoken },
-      success: function(data){
-        console.log(data);
-        window.location.replace(`/homes/${user.username}`)
-      }
-    });
+    window.location.replace(`/homes/${user.username}`)
   }).fail(function(err){
-    console.log(err);
+    $('#username').val('');
+    $('#password').val('');
+    swal('Error:', err.responseText, 'error');
   });
 }
 

@@ -5,7 +5,10 @@ block css
 
 block content
   h1 Home
-  
+  if (user.isHome)
+    h1= Welcome home, user.username
+  else
+    h1= Welcome to user.username's house
   
 block js
   script(src='../js/main.js')
