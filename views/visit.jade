@@ -7,14 +7,14 @@ block content
   - var name = user.username
   - var startPokemon = user.startPokemon
   if (homeowner)
-    - var homeowner = homeowner.username
+    - var homeownername = homeowner.username
     - var homepokemon = homeowner.startPokemon
-    h1 Welcome to #{homeowner}'s home!
+    h1 Welcome to #{homeownername}'s home!
     h1 Check out these pokemon:
     h1= homepokemon
   else
     h1 Welcome home, #{name}
-    h1 Your pokemon:
+    h1 This is the visit page
     h1= startPokemon
   
   a.btn.btn-default#worldMap(href='/worldmap') World Map

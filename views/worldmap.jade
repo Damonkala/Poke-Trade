@@ -1,0 +1,17 @@
+extends layout
+
+block css
+  link(href='../css/style.css', rel='stylesheet')
+
+block content
+  
+  .container-fluid
+    .row
+      each user in users
+        .col-xs-2.home(id= user.username)
+          h1= user.username
+  
+  
+  
+block js
+  script(src='../js/main.js')

@@ -11,14 +11,22 @@ router.get('/:id', auth, function(req, res){
   // find authenticated users id && /:id
   if (req.authenticateduser.username === req.params.id){
     // go to user's home
+    console.log('top')
     res.render('home', {user: req.authenticateduser});
+    // res.render('index', {title: 'Poke-Trade' });
   } else {
     // go to guest home
-    User.findById(req.params.id, function(err, guestUser){
+    User.findOne({username: req.params.id}, function(err, guestUser){
       //error check
-      res.render('home', {user: guestUser})
+      console.log('bottom', guestUser)
+      // res.render('home', {user: guestUser})
+    res.render('visit', {user: req.authenticateduser, homeowner: guestUser})
     });
   }
 });
+//
+// router.get('/:id/home', function(req, res){
+//
+// })
 
 module.exports = router;

@@ -5,6 +5,20 @@ $(document).ready(init);
 function init(){
   $('#createNewUser').click(createNewUser);
   $('#login').click(login);
+  $('.home').click(visitHome);
+}
+
+function visitHome(){
+  var username = $(this).attr('id')
+
+  $.get(`/homes/${username}`)
+  .done(function(data){
+    var userHome = data.username;
+
+    window.location.replace(`/homes/${username}`)
+  }).fail(function(err){
+    console.log(err);
+  });
 }
 
 function login(event){
