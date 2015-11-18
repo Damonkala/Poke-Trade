@@ -1,0 +1,22 @@
+{
+  "name": "poketrade",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Patrick Shaughnessy <pshaughn86@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4"
+  }
+}
