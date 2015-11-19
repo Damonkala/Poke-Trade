@@ -6,11 +6,12 @@ block css
 block content
   - var name = user.username
   - var startPokemon = user.startPokemon
-  h1 Welcome home, #{name}
+  h1#username(data-username= name) Welcome home, #{name}
   h1 Your pokemon:
   h1#startPokemon= startPokemon
   a.btn.btn-default#logout Logout
   a.btn.btn-default#worldMap(href='/worldmap') World Map
+  button.btn.btn-default#generatePokemon Generate Pokemon
   if (user.tradesPending)
     button#button1.btn.btn-primary.btn-lg(type='button', data-toggle='modal', data-target='#tradeModal')
        | Accept Trade?
@@ -25,7 +26,11 @@ block content
             h1#newTrade(data-tradeid= trade[0]._id) #{trade[0].guestName} wants to trade #{trade[0].guestPokemon} for your #{trade[0].homePokemon}
           .modal-footer
             button.btn.btn-default#acceptTrade(type='button', data-dismiss='modal') Accept
-  
+  #pokemonArea
+    each poke in user.pokemon
+      h1= poke.name
+      img(src= poke.image)
+    
   
 block js
   script(src='../js/trades.js')

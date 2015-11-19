@@ -10,6 +10,78 @@ function init(){
   $('.homePokemon').click(highlightHomePokemon);
   $('.guestPokemon').click(highlightGuestPokemon);
   $('.home').click(visitHome);
+  $('#generatePokemon').click(generatePokemon);
+}
+
+function generatePokemon() {
+  let pokedex;
+
+  $.get('http://pokeapi.co/api/v1/pokedex/1/')
+    .done(function(data){
+      pokedex = data;
+          // var intervalID = window.setInterval(function(){
+          //   generatePokemon();
+          //
+          // }, 5000);
+          //
+          // window.setTimeout(function(){
+          //   window.clearInterval(intervalID);
+          // }, 50000);
+
+      let randomPokemonNumber = Math.floor(Math.random() * 778);
+      let randomPokemonName = pokedex.pokemon[randomPokemonNumber].name;
+
+      let pokemonData = 'http://pokeapi.co/' + pokedex.pokemon[randomPokemonNumber].resource_uri;
+
+      $.get(pokemonData)
+        .done(function(data){
+
+            // let $attack = $('<p>').text('Attack Power: ' + data.attack);
+            // let $defense = $('<p>').text('Defense Power: ' + data.defense);
+            // let $hp = $('<p>').text('HP: ' + data.hp);
+
+        let pokemonSprite = 'http://pokeapi.co/' + data.sprites[0].resource_uri;
+
+        $.get(pokemonSprite)
+          .done(function(data){
+            let $pokemonImage = $('<img>').attr('src', 'http://pokeapi.co/' + data.image);
+            // let pokemonLocation = Math.floor(Math.random() * 120);
+            let $pokemonName = $('<h1>').text(randomPokemonName);
+
+            $('#pokemonArea').append($pokemonImage, $pokemonName);
+            var newPokemon = {};
+            newPokemon.name = randomPokemonName;
+            newPokemon.image = 'http://pokeapi.co/' + data.image;
+            var username = $('#username').data('username');
+
+            $.post('/users/pokemon/' + username, newPokemon)
+            .done(function(data){
+              console.log(data);
+            })
+            .fail(function(err){
+              console.log(err);
+            })
+            // pokemonRef.child(randomPokemonName).set({
+            //   name: randomPokemonName,
+            //   number: randomPokemonNumber,
+            //   image: pokemonImage,
+            //   position: pokemonLocation
+            // });
+
+
+
+          }).fail(function(error){
+            console.log('Failed at sprite retrieval. Error: ', error);
+          });
+
+      }).fail(function(err){
+        console.log('Failed at pokemon retrieval. Error: ', error);
+      });
+
+  }).fail(function(err){
+    console.log('Failed at pokedex. Error: ', error);
+  });
+
 }
 
 function makeTrade(){

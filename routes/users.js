@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var User = require('../models/user');
+var Pokemon = require('../models/pokemon');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -31,5 +32,12 @@ router.post('/logout', function(req,res){
   res.clearCookie('token')
   res.send();
 });
+
+router.post('/pokemon/:username', function(req, res){
+  Pokemon.create(req.body, function(err, pokemon){
+    pokemon.addToUser(req.params.username);
+    res.send(pokemon);
+  })
+})
 
 module.exports = router;
