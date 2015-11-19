@@ -10,7 +10,9 @@ router.post('/', function(req, res) {
   Trade.create(req.body, function(err, newTrade){
 		if (err) return res.status(400).send(err)
 		console.log(newTrade);
-
+		newTrade.removePokemon()
+		// newTrade.removeHomePokemon(newTrade)
+		// newTrade.notifyHomeowner(newTrade)
 	})
 });
 

@@ -6,18 +6,20 @@ block css
 block content
   - var name = user.username
   - var startPokemon = user.startPokemon
-  if (homeowner)
-    - var homeowner = homeowner.username
-    - var homepokemon = homeowner.startPokemon
-    h1 Welcome to #{homeowner}'s home!
-    h1 Check out these pokemon:
-    h1= homepokemon
-  else
-    h1 Welcome home, #{name}
-    h1 Your pokemon:
-    h1= startPokemon
+  h1 Welcome home, #{name}
+  h1 Your pokemon:
+  h1= startPokemon
   a.btn.btn-default#logout Logout
   a.btn.btn-default#worldMap(href='/worldmap') World Map
+  if (user.tradesPending)
+    a.btn.btn-default#showTrades Show Trades
+  //- if (homeowner)
+  //-   - var homeowner = homeowner.username
+  //-   - var homepokemon = homeowner.startPokemon
+  //-   h1 Welcome to #{homeowner}'s home!
+  //-   h1 Check out these pokemon:
+  //-   h1= homepokemon
+//- else
   
   
   

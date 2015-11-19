@@ -8,7 +8,8 @@ var jwt = require('jwt-simple');
 var Pokemon;
 
 var pokemonSchema = Schema({
-  name: { type: String, required: true}
+  name: { type: String, required: true},
+	pendingTrade: { type: Boolean, default: false}
 });
 
 Pokemon = mongoose.model('Pokemon', pokemonSchema);

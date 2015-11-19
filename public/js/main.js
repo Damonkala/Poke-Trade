@@ -67,10 +67,10 @@ function login(event){
 
 function createNewUser(event){
   event.preventDefault();
-  if( !$('#username').val() || !$('#password').val()){
+  if( !$('#newUsername').val() || !$('#newPassword').val()){
     return;
   }
-  if ($('#passconf').val() !== $('#newPassword').val() || $('#username') === null){
+  if ($('#passconf').val() !== $('#newPassword').val()){
     // debugger;
     alert('Passwords do not match');
     return;

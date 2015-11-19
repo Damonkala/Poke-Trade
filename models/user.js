@@ -11,7 +11,8 @@ var userSchema = Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   startPokemon: {type: String, required: true },
-  pokemon: [{ type: Schema.Types.ObjectId, ref: "Pokemon"}]
+  pokemon: [{ type: Schema.Types.ObjectId, ref: "Pokemon"}],
+  tradesPending: {type: Boolean, default: false}
   // outgoingTrade: [{ type: Schema.Types.ObjectId, ref: "Trade"}],
   // incomingTrade: [{ type: Schema.Types.ObjectId, ref: "Trade"}]
   // incomingTrade:

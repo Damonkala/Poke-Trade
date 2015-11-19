@@ -11,6 +11,10 @@ router.get('/:id', auth, function(req, res){
   // find authenticated users id && /:id
   if (req.authenticateduser.username === req.params.id){
     // go to user's home
+    // if(req.authenticateduser.tradesPending){
+    //   Trade.getTradeInfo(req.)
+    // }
+
     console.log('top')
     res.render('home', {user: req.authenticateduser});
     // res.render('index', {title: 'Poke-Trade' });
