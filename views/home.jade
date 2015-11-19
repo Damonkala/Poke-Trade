@@ -8,11 +8,11 @@ block content
   - var startPokemon = user.startPokemon
   h1 Welcome home, #{name}
   h1 Your pokemon:
-  h1= startPokemon
+  h1#startPokemon= startPokemon
   a.btn.btn-default#logout Logout
   a.btn.btn-default#worldMap(href='/worldmap') World Map
   if (user.tradesPending)
-    button.btn.btn-primary.btn-lg(type='button', data-toggle='modal', data-target='#tradeModal')
+    button#button1.btn.btn-primary.btn-lg(type='button', data-toggle='modal', data-target='#tradeModal')
        | Accept Trade?
     #tradeModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='tradeModalLabel')
       .modal-dialog(role='document')
@@ -25,15 +25,8 @@ block content
             h1#newTrade(data-tradeid= trade[0]._id) #{trade[0].guestName} wants to trade #{trade[0].guestPokemon} for your #{trade[0].homePokemon}
           .modal-footer
             button.btn.btn-default#acceptTrade(type='button', data-dismiss='modal') Accept
-  //- if (homeowner)
-  //-   - var homeowner = homeowner.username
-  //-   - var homepokemon = homeowner.startPokemon
-  //-   h1 Welcome to #{homeowner}'s home!
-  //-   h1 Check out these pokemon:
-  //-   h1= homepokemon
-//- else
-  
   
   
 block js
   script(src='../js/trades.js')
+  script(src='../js/main.js')

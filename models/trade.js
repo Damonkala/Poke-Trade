@@ -39,7 +39,7 @@ tradeSchema.methods.pokemonToHomes = function(){
 tradeSchema.statics.accept = function(tradeid, cb){
   Trade.findById(JSON.parse(tradeid), function(err, trade){
     trade.pokemonToHomes()
-    console.log("TRADE: ", trade);
+    cb(err, trade);
   })
 }
 

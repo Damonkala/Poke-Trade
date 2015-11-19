@@ -23,6 +23,7 @@ function makeTrade(){
     $.post('/trades', tradeInfo)
     .done(function(data){
       console.log(data);
+      swal('HUZAH!', "Your trade has been requested", 'success')
     })
     .fail(function(err){
       console.log(err);
@@ -83,7 +84,14 @@ function createNewUser(event){
 
   $.post('/users/register', newUser)
   .done(function(data){
-    console.log(data);
+    $.post('/users/login', newUser)
+    .done(function(data){
+      window.location.replace(`/homes/${newUser.username}`)
+    }).fail(function(err){
+      $('#username').val('');
+      $('#password').val('');
+      swal('Error:', err.responseText, 'error');
+    });
   }).fail(function(err){
     console.log(err);
   });
