@@ -12,7 +12,8 @@ var userSchema = Schema({
   password: { type: String, required: true },
   startPokemon: {type: String, required: true },
   pokemon: [{ type: Schema.Types.ObjectId, ref: "Pokemon"}]
-  // outgoingTrade: 
+  // outgoingTrade: [{ type: Schema.Types.ObjectId, ref: "Trade"}],
+  // incomingTrade: [{ type: Schema.Types.ObjectId, ref: "Trade"}]
   // incomingTrade:
 
   // click trade
