@@ -6,7 +6,33 @@ function init(){
   $('#createNewUser').click(createNewUser);
   $('#login').click(login);
   $('#logout').click(logout);
+  $('#makeTrade').click(makeTrade);
+  $('.homePokemon').click(highlightHomePokemon);
+  $('.guestPokemon').click(highlightGuestPokemon);
   $('.home').click(visitHome);
+}
+
+function makeTrade(){
+  var tradeInfo = {};
+  tradeInfo.homePokemon = $(".homePokemonHighlighted h1").text();
+  tradeInfo.guestPokemon = $(".guestPokemonHighlighted h1").text();
+  if(tradeInfo.homePokemon && tradeInfo.guestPokemon){
+    tradeInfo.homeownerId = $('.homePokemonHighlighted').data('id');
+    tradeInfo.guestId = $('.guestPokemonHighlighted').data('id');
+    $.post('/trades', tradeInfo)
+    .done(function(data){
+      console.log(data);
+    })
+    .fail(function(err){
+      console.log(err);
+    })
+  }
+}
+function highlightHomePokemon () {
+  $(this).toggleClass("homePokemonHighlighted");
+}
+function highlightGuestPokemon () {
+  $(this).toggleClass("guestPokemonHighlighted");
 }
 
 function visitHome(){
