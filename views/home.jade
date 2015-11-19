@@ -12,7 +12,19 @@ block content
   a.btn.btn-default#logout Logout
   a.btn.btn-default#worldMap(href='/worldmap') World Map
   if (user.tradesPending)
-    a.btn.btn-default#showTrades Show Trades
+    button.btn.btn-primary.btn-lg(type='button', data-toggle='modal', data-target='#tradeModal')
+       | Accept Trade?
+    #tradeModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='tradeModalLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+            h4#tradeModalLabel.modal-title Let's trade!
+          .modal-body
+            h1 #{trade[0].guestName} wants to trade #{trade[0].guestPokemon} for your #{trade[0].homePokemon}
+          .modal-footer
+            button.btn.btn-default#acceptTrade(type='button', data-dismiss='modal') Accept
   //- if (homeowner)
   //-   - var homeowner = homeowner.username
   //-   - var homepokemon = homeowner.startPokemon

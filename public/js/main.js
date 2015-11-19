@@ -19,6 +19,7 @@ function makeTrade(){
   if(tradeInfo.homePokemon && tradeInfo.guestPokemon){
     tradeInfo.homeownerId = $('.homePokemonHighlighted').data('id');
     tradeInfo.guestId = $('.guestPokemonHighlighted').data('id');
+    tradeInfo.guestName = $('.guestPokemonHighlighted').data('name');
     $.post('/trades', tradeInfo)
     .done(function(data){
       console.log(data);

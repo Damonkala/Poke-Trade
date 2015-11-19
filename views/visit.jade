@@ -34,7 +34,7 @@ block content
            .homePokemon(data-id= homeownerId)
              h1= homepokemon
            h1 #{guestName}'s pokemon
-           .guestPokemon(data-id= guestId)
+           .guestPokemon(data-id= guestId, data-name= guestName)
              h1= guestStartPokemon
          .modal-footer
            button.btn.btn-default#makeTrade(type='button', data-dismiss='modal') Make Trade
