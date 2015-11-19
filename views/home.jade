@@ -22,7 +22,7 @@ block content
               span(aria-hidden='true') ×
             h4#tradeModalLabel.modal-title Let's trade!
           .modal-body
-            h1 #{trade[0].guestName} wants to trade #{trade[0].guestPokemon} for your #{trade[0].homePokemon}
+            h1#newTrade(data-tradeid= trade[0]._id) #{trade[0].guestName} wants to trade #{trade[0].guestPokemon} for your #{trade[0].homePokemon}
           .modal-footer
             button.btn.btn-default#acceptTrade(type='button', data-dismiss='modal') Accept
   //- if (homeowner)
@@ -36,4 +36,4 @@ block content
   
   
 block js
-  script(src='../js/main.js')
+  script(src='../js/trades.js')

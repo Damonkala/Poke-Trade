@@ -27,15 +27,22 @@ tradeSchema.methods.removePokemon = function(){
     console.log(updatedUser);
   })
 }
-// tradeSchema.methods.notifyHomeowner = function(){
-//   User.update({})
-//   // User.findById(newTrade.homeownerId, function(err, homeowner){
-//   //   homeowner.tradesPending = true;
-//   //   homeowner.save (function(err, savedHomeowner){
-//   //     cb(err, savedHomeowner);
-//   //   });
-//   // })
-// }
+tradeSchema.methods.pokemonToHomes = function(){
+  User.update({ _id: JSON.parse(this.homeownerId)}, { tradesPending: false, startPokemon: this.guestPokemon}, function(err, updatedUser){
+    console.log(updatedUser);
+  })
+  User.update({ _id: JSON.parse(this.guestId)}, { tradesPending: false, startPokemon: this.homePokemon}, function(err, updatedUser){
+    console.log(updatedUser);
+  })
+}
+
+tradeSchema.statics.accept = function(tradeid, cb){
+  Trade.findById(JSON.parse(tradeid), function(err, trade){
+    trade.pokemonToHomes()
+    console.log("TRADE: ", trade);
+  })
+}
+
 
 tradeSchema.statics.create = function(trade, cb){
   var newTrade = new Trade();

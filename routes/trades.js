@@ -16,7 +16,12 @@ router.post('/', function(req, res) {
 	})
 });
 
-
+router.post('/accept/:id', function (req, res) {
+	console.log(req.params.id);
+	Trade.accept(req.params.id, function(err, success) {
+		res.send(success);
+	})
+})
 
 
 module.exports = router;
