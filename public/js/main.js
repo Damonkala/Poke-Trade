@@ -5,6 +5,7 @@ $(document).ready(init);
 function init(){
   $('#createNewUser').click(createNewUser);
   $('#login').click(login);
+  $('#logout').click(logout);
   $('.home').click(visitHome);
 }
 
@@ -40,12 +41,14 @@ function login(event){
 
 function createNewUser(event){
   event.preventDefault();
-  if ($('#passconf').val() !== $('#newPassword').val()){
-    debugger;
+  if( !$('#username').val() || !$('#password').val()){
+    return;
+  }
+  if ($('#passconf').val() !== $('#newPassword').val() || $('#username') === null){
+    // debugger;
     alert('Passwords do not match');
     return;
   }
-
   var newUser = {};
   newUser.username = $('#newUsername').val();
   newUser.password = $('#newPassword').val();
@@ -57,4 +60,13 @@ function createNewUser(event){
   }).fail(function(err){
     console.log(err);
   });
+}
+
+function logout() {
+  $.post('/users/logout')
+  .done(function(){
+    console.log('cookies erased')
+    window.location.replace('/')
+  })
+  // .fail()
 }

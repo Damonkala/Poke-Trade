@@ -11,7 +11,7 @@ var userSchema = Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   startPokemon: {type: String, required: true },
-  // pokemon:  pokemon Schema
+  // pokemon: [{ type: schema.Types.ObjectId, ref: "Pokemon"}]
   // outgoingTrade:
   // incomingTrade:
 
@@ -63,7 +63,6 @@ userSchema.statics.register = function(user, cb){
 
   User.findOne({username: username}, function(err, user){
     if (err || user) return res.status(400).send(err || "That username is already taken");
-
     bcrypt.genSalt(10, function(err1, salt){
       bcrypt.hash(password, salt, function(err2, hash){
         if(err1 || err2) return cb(err1 || err2);

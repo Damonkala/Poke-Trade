@@ -27,4 +27,9 @@ router.post('/login', function(req, res){
   });
 });
 
+router.post('/logout', function(req,res){
+  res.clearCookie('token')
+  res.send();
+});
+
 module.exports = router;
