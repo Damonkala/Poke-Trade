@@ -56,7 +56,7 @@ function generatePokemon() {
 
             $.post('/users/pokemon/' + username, newPokemon)
             .done(function(data){
-              console.log(data);
+              window.location.replace(`/homes/${data.username}`)
             })
             .fail(function(err){
               console.log(err);

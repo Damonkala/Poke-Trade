@@ -33,11 +33,20 @@ router.post('/logout', function(req,res){
   res.send();
 });
 
+// router.post('/pokemon/:username', function(req, res){
+//   Pokemon.create(req.body, function(err, pokemon){
+//     pokemon.addToUser(req.params.username);
+//     res.send(pokemon);
+//   })
+// })
+
 router.post('/pokemon/:username', function(req, res){
-  Pokemon.create(req.body, function(err, pokemon){
-    pokemon.addToUser(req.params.username);
-    res.send(pokemon);
-  })
+    var pokemon = req.body;
+    var username = req.params.username;
+    Pokemon.addToUser(pokemon, username, function(err, user){
+      console.log('after add', user, username)
+      res.send(user);
+    });
 })
 
 module.exports = router;
