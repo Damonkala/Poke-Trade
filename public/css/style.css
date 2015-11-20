@@ -6,7 +6,7 @@ body {
 a {
   color: #00B7FF;
 }
-.homePokemon, .guestPokemon{
+.homemon, .guestmon{
   border: 1px solid black;
 }
 .homePokemonHighlighted, .guestPokemonHighlighted{

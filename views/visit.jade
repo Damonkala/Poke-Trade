@@ -34,16 +34,18 @@ block content
          .modal-body
            h1 #{homeownername}'s pokemon
            .homePokemon(data-id= homeownerId)
+           h1.homemon= homeowner.startPokemon
            .pokemonArea
              each pokemon in homeowner.pokemon
-               h1= pokemon.name
+               h1.homemon= pokemon.name
                img(src= pokemon.image)
            h1 #{guestName}'s pokemon
            .guestPokemon(data-id= guestId, data-name= guestName)
-           .pokemonArea
-             each pokemon in user.pokemon
-              h1= pokemon.name
-              img(src= pokemon.image)
+             h1.guestmon= user.startPokemon
+             .pokemonArea
+               each pokemon in user.pokemon
+                h1.guestmon= pokemon.name
+                img(src= pokemon.image)
          .modal-footer
            button.btn.btn-default#makeTrade(type='button', data-dismiss='modal') Make Trade
 

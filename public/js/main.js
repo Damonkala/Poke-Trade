@@ -7,8 +7,8 @@ function init(){
   $('#login').click(login);
   $('#logout').click(logout);
   $('#makeTrade').click(makeTrade);
-  $('.homePokemon').click(highlightHomePokemon);
-  $('.guestPokemon').click(highlightGuestPokemon);
+  $('.homemon').click(highlightHomePokemon);
+  $('.guestmon').click(highlightGuestPokemon);
   $('.home').click(visitHome);
   $('#generatePokemon').click(generatePokemon);
 }
