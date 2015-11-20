@@ -1,5 +1,39 @@
 extends layout
 
+block css
+  link(rel='stylesheet', href='../css/style.css')
+
 block content
-  h1= title
-  p Welcome to #{title}
+  .container-fluid
+    .row
+      .col-xs-12#welcome
+        h1 Welcome to PokeTrade!
+        h2 The Pokemon Trading Arena 
+  .container-fluid
+    .row
+      .col-xs-6
+        h4 Wanna trade? Sign up below!
+        form
+          .form-group
+            label(for='signupEmail') Email address
+            input#signupEmail.form-control(type='email', placeholder='Email' value='pshaughn86@gmail.com')
+          .form-group
+            label(for='signupPassword1') Password
+            input#signupPassword1.form-control(type='password', placeholder='Password' value='123')
+          .form-group
+            label(for='signupPassword2') Confirm Password
+            input#signupPassword2.form-control(type='password', placeholder='Confirm Password' value='123')
+          button.btn.btn-default#signupButton(type='button') Sign Up!
+      .col-xs-6
+        h4 Already a member? Sign in to catch em all!
+        form
+          .form-group
+            label(for='signinEmail') Email address
+            input#signinEmail.form-control(type='email', placeholder='Email')
+          .form-group
+            label(for='signinPassword') Password
+            input#signinPassword.form-control(type='password', placeholder='Password')
+          button.btn.btn-default#signinButton(type='button') Sign In!
+  
+block js
+  script(src='../js/main.js')

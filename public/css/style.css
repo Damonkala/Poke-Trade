@@ -1,0 +1,9 @@
+#welcome {
+  text-align: center;
+}
+
+body {
+  background-image: url('http://images.alphacoders.com/235/235203.png');
+  background-repeat: no-repeat;
+  /*background-size: contain;*/
+}
