@@ -16,7 +16,7 @@ function init(){
 function generatePokemon() {
   let pokedex;
 
-  $.get('http://pokeapi.co/api/v1/pokedex/1/')
+  $.get('https://pokeapi.co/api/v1/pokedex/1/')
     .done(function(data){
       pokedex = data;
           // var intervalID = window.setInterval(function(){
@@ -31,7 +31,7 @@ function generatePokemon() {
       let randomPokemonNumber = Math.floor(Math.random() * 778);
       let randomPokemonName = pokedex.pokemon[randomPokemonNumber].name;
 
-      let pokemonData = 'http://pokeapi.co/' + pokedex.pokemon[randomPokemonNumber].resource_uri;
+      let pokemonData = 'https://pokeapi.co/' + pokedex.pokemon[randomPokemonNumber].resource_uri;
 
       $.get(pokemonData)
         .done(function(data){
@@ -40,11 +40,11 @@ function generatePokemon() {
             // let $defense = $('<p>').text('Defense Power: ' + data.defense);
             // let $hp = $('<p>').text('HP: ' + data.hp);
 
-        let pokemonSprite = 'http://pokeapi.co/' + data.sprites[0].resource_uri;
+        let pokemonSprite = 'https://pokeapi.co/' + data.sprites[0].resource_uri;
 
         $.get(pokemonSprite)
           .done(function(data){
-            let $pokemonImage = $('<img>').attr('src', 'http://pokeapi.co/' + data.image);
+            let $pokemonImage = $('<img>').attr('src', 'https://pokeapi.co/' + data.image);
             // let pokemonLocation = Math.floor(Math.random() * 120);
             let $pokemonName = $('<h1>').text(randomPokemonName);
 

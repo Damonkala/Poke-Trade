@@ -64,7 +64,7 @@ userSchema.statics.register = function(user, cb){
   var startPokemon = user.startPokemon;
 
   User.findOne({username: username}, function(err, user){
-    if (err || user) return res.status(400).send(err || "That username is already taken");
+    if(err || user) return cb(err || 'Username already taken.');
     bcrypt.genSalt(10, function(err1, salt){
       bcrypt.hash(password, salt, function(err2, hash){
         if(err1 || err2) return cb(err1 || err2);
