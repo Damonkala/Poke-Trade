@@ -28,10 +28,13 @@ router.get('/:id', auth, function(req, res){
     // User.findOne({username: req.params.id}, function(err, guestUser){
     //   res.render('visit', {user: req.authenticateduser, homeowner: guestUser})
     // });
-    User.findOne({username: req.params.id})
-      .populate('pokemon').exec(function(err, guestUser){
-      res.render('visit', {user: req.authenticateduser, homeowner: guestUser})
+  User.findOne({username: req.authenticateduser.username})
+    .populate('pokemon').exec(function(err, enterUser){
+      User.findOne({username: req.params.id})
+        .populate('pokemon').exec(function(err, guestUser){
+          res.render('visit', {user: enterUser, homeowner: guestUser})
 });
+})
 }
 })
 module.exports = router;

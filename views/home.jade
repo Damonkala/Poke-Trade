@@ -26,7 +26,7 @@ block content
             h1#newTrade(data-tradeid= trade[0]._id) #{trade[0].guestName} wants to trade #{trade[0].guestPokemon} for your #{trade[0].homePokemon}
           .modal-footer
             button.btn.btn-default#acceptTrade(type='button', data-dismiss='modal') Accept
-  #pokemonArea
+  .pokemonArea
     each poke in user.pokemon
       h1= poke.name
       img(src= poke.image)

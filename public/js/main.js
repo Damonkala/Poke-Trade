@@ -48,7 +48,7 @@ function generatePokemon() {
             // let pokemonLocation = Math.floor(Math.random() * 120);
             let $pokemonName = $('<h1>').text(randomPokemonName);
 
-            $('#pokemonArea').append($pokemonImage, $pokemonName);
+            $('.pokemonArea').append($pokemonImage, $pokemonName);
             var newPokemon = {};
             newPokemon.name = randomPokemonName;
             newPokemon.image = 'http://pokeapi.co/' + data.image;

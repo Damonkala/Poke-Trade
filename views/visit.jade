@@ -6,13 +6,13 @@ block css
 block content
   - var guestName = user.username
   - var guestId = user._id 
-  - var guestStartPokemon = user.pokemon
+  - var guestPokemon = user.pokemon
   if (homeowner)
     - var homeownername = homeowner.username
     - var homeownerId = homeowner._id 
     - var homepokemon = homeowner.pokemon
     h1 Welcome to #{homeownername}'s home!
-    #pokemonArea
+    .pokemonArea
       each pokemon in homeowner.pokemon
         h1= pokemon.name
         img(src= pokemon.image)
@@ -34,10 +34,16 @@ block content
          .modal-body
            h1 #{homeownername}'s pokemon
            .homePokemon(data-id= homeownerId)
-             h1= homepokemon
+           .pokemonArea
+             each pokemon in homeowner.pokemon
+               h1= pokemon.name
+               img(src= pokemon.image)
            h1 #{guestName}'s pokemon
            .guestPokemon(data-id= guestId, data-name= guestName)
-             h1= guestStartPokemon
+           .pokemonArea
+             each pokemon in user.pokemon
+              h1= pokemon.name
+              img(src= pokemon.image)
          .modal-footer
            button.btn.btn-default#makeTrade(type='button', data-dismiss='modal') Make Trade
 
