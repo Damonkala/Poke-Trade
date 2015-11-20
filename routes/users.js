@@ -35,8 +35,9 @@ router.post('/logout', function(req,res){
 
 router.post('/pokemon/:username', function(req, res){
   Pokemon.create(req.body, function(err, pokemon){
-    pokemon.addToUser(req.params.username);
+    pokemon.addToUser(req.params.username, pokemon);
     res.send(pokemon);
+    console.log("POKEMON:", pokemon)
   })
 })
 

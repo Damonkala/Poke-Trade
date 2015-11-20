@@ -13,15 +13,17 @@ var pokemonSchema = Schema({
 	pendingTrade: { type: Boolean, default: false}
 });
 
-pokemonSchema.methods.addToUser = function(username){
+pokemonSchema.methods.addToUser = function(username, pokemon){
   console.log('inside method', this)
+  console.log("Bringing Pokemon to user")
   // User.update({username: username}, {pokemon: {$push: this}}, function(err, user){
   //   console.log('pokemon added to user', user);
   // })
 
   User.findOne({username: username}).populate('pokemon').exec(function(err, user){
-    console.log('user', user);
-    user.pokemon.push(this);
+    console.log("USER:", user)
+    console.log("THIS:", pokemon)
+    user.pokemon.push(pokemon);
     user.save();
   });
 }

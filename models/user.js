@@ -13,39 +13,6 @@ var userSchema = Schema({
   startPokemon: {type: String, required: true },
   pokemon: [{ type: Schema.Types.ObjectId, ref: "Pokemon"}],
   tradesPending: {type: Boolean, default: false}
-  // outgoingTrade: [{ type: Schema.Types.ObjectId, ref: "Trade"}],
-  // incomingTrade: [{ type: Schema.Types.ObjectId, ref: "Trade"}]
-  // incomingTrade:
-
-  // click trade
-  // user = Rich, char     tradingpartner = Bob, bulb
-  // 1) pull charmander from Rich pokemon
-  // 2) put charmander in outgoingTrade
-  //    - charmander
-  //    - bobId
-  //    - bulbasaur
-  // 3) find bob in DB
-  //    - User.find(bob)
-  //    - pull bulbasaur from Bob pokemon
-  //    - populate incomingTrade
-  //      - charmander
-  //      - richId
-  //      - bulbasaur
-  // 4) Case 1 = bob accepts charmander
-  //    - bob:
-  //      - charmder to bob pokemon
-  //      - clear incomingTrade for bob
-  //    - rich:
-  //      -bulbasaur to rich pokemon
-  //      -clear outgoingTrade
-  // 5) Case 2 = bob declines charmander
-  //    - bob:
-  //      - bulbasaur to bob pokemon
-  //      - clear incomingTrade for bob
-  //    - rich:
-  //      -charmander to rich pokemon
-  //      -clear outgoingTrade
-  //
 });
 
 userSchema.methods.token = function(){
