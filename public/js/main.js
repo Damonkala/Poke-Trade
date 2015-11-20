@@ -17,12 +17,12 @@ function signup(e){
 
   if (newUser.email && newUser.password && newUser.password === pwd2){
     $.post('/users/register', newUser)
-    .done(function(data){
-      
+    .done(function(authUser){
+      window.location.replace(`/users/start/${authUser._id}`);
     })
     .fail(function(err){
-
+      console.log(err);
+      swal('Oops!', err.responseText, 'error')
     })
   }
-  debugger;
 }

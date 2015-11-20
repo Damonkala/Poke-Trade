@@ -1,0 +1,45 @@
+extends layout
+
+block css
+  link(rel='stylesheet', href='../../css/start.css')
+
+block content
+  img.background(src='http://img15.deviantart.net/8b81/i/2009/271/9/0/pokeball_by_tigerhawk01.jpg')
+  .container-fluid#welcome
+    .row
+      .col-xs-12
+        h1 Welcome to Poke Trade!
+        h3 Let's get you set up for trading.
+        h3 Please complete all the fields below.
+      .col-xs-12
+        .row
+          .col-xs-4
+            form
+              .form-group
+                label(for='name') Your Name
+                input#name.form-control(type='text', placeholder='Enter your name')
+              h4 Your first pokemon
+              .radio
+                label
+                  input#bulbasaur(type='radio', name='startPokemon', value='bulbasaur', checked='')
+                  |     Bulbasaur
+                  img(src="http://pokeapi.co/media/img/1.png")
+              .radio
+                label
+                  input#squirtle(type='radio', name='startPokemon', value='squirtle')
+                  |     Squirtle
+                  img(src="http://pokeapi.co/media/img/7.png")
+              .radio
+                label
+                  input#charmander(type='radio', name='startPokemon', value='charmander')
+                  |     Charmander
+                  img(src="http://pokeapi.co/media/img/4.png")
+              .radio
+                label
+                  input#pikachu(type='radio', name='startPokemon', value='pikachu')
+                  |     Pikachu
+                  img(src="http://pokeapi.co/media/img/25.png")
+              button.btn.btn-default#start(type='button') Start!
+        
+block js
+  script(src='../../js/start.js')
