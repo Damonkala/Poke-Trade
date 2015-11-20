@@ -6,14 +6,16 @@ block css
 block content
   - var guestName = user.username
   - var guestId = user._id 
-  - var guestStartPokemon = user.startPokemon
+  - var guestStartPokemon = user.pokemon
   if (homeowner)
     - var homeownername = homeowner.username
     - var homeownerId = homeowner._id 
-    - var homepokemon = homeowner.startPokemon
+    - var homepokemon = homeowner.pokemon
     h1 Welcome to #{homeownername}'s home!
-    h1 Check out these pokemon:
-    h1= homepokemon
+    #pokemonArea
+      each pokemon in homeowner.pokemon
+        h1= pokemon.name
+        img(src= pokemon.image)
   else
     h1 Welcome home, #{guestName}
     h1 This is the visit page

@@ -25,12 +25,13 @@ router.get('/:id', auth, function(req, res){
 
   } else {
     // go to guest home
-    User.findOne({username: req.params.id}, function(err, guestUser){
-      //error check
-    res.render('visit', {user: req.authenticateduser, homeowner: guestUser})
-    });
-  }
+    // User.findOne({username: req.params.id}, function(err, guestUser){
+    //   res.render('visit', {user: req.authenticateduser, homeowner: guestUser})
+    // });
+    User.findOne({username: req.params.id})
+      .populate('pokemon').exec(function(err, guestUser){
+      res.render('visit', {user: req.authenticateduser, homeowner: guestUser})
 });
-
-
+}
+})
 module.exports = router;
