@@ -18,7 +18,8 @@ function start(e){
     $.post('/users/update', userPrefs)
     .done(function(authUser){
       console.log(authUser);
-      window.location.replace('/homes');
+      debugger;
+      window.location.replace(`/homes/${authUser._id}`);
     })
     .fail(function(err){
       console.log(err);

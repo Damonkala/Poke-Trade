@@ -13,17 +13,18 @@ var pokemonSchema = Schema({
 });
 
 pokemonSchema.statics.findUserAndAddPokemon = function(user, pokemon, cb){
-  user.save(function(err){
+  var newPokemon = new Pokemon({
+    name: pokemon,
+    owner: user._id
+  });
+
+  newPokemon.save(function(err){
     if (err) return cb(err);
-    var newPokemon = new Pokemon({
-      name: pokemon,
-      owner: user._id
-    });
-    newPokemon.save(function(err){
-  console.log('inside find', newPokemon);
+    user.pokemons.push(newPokemon);
+    user.save(function(err){
       if (err) return cb(err);
       cb(null, newPokemon);
-    })
+    });
   });
 }
 

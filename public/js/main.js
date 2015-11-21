@@ -4,7 +4,14 @@ $(document).ready(init);
 
 function init(){
   $('#signupButton').click(signup);
+  // $('#signin').click(signin);
 }
+
+// function signin(e){
+//   e.preventDefault();
+//
+//
+// }
 
 function signup(e){
   e.preventDefault();

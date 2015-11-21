@@ -11,7 +11,7 @@ var userSchema = Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   name: String,
-  // pokemons: [{type: Schema.Types.ObjectId, ref: 'Pokemon'}]
+  pokemons: [{type: Schema.Types.ObjectId, ref: 'Pokemon'}]
 });
 
 userSchema.methods.generateToken = function(){
