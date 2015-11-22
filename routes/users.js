@@ -8,26 +8,20 @@ var User = require('../models/user');
 var Pokemon = require('../models/pokemon');
 
 router.post('/update', authorize, function(req, res){
-  console.log('body', req.body)
-  console.log('user', req.user)
   if (req.body.name){
     User.update({_id: req.user._id}, {$set: {name: req.body.name}}, function(err, raw){
       if (err) return res.status(400).send(err);
-      console.log('user name updated', raw);
     });
   }
   if (req.body.pokemon){
-    console.log('here', req.body.pokemon, req.user);
     Pokemon.findUserAndAddPokemon(req.user, req.body.pokemon, function(err, savedPokemon){
-      console.log(savedPokemon);
       res.send(req.user);
     })
   }
 })
 
 router.get('/start/:id', authorize, function(req, res){
-  console.log('go to start:', req.user);
-  res.render('start')
+  res.render('start');
 });
 
 router.post('/register', function(req, res){
@@ -38,9 +32,23 @@ router.post('/register', function(req, res){
       var token = authUser.generateToken();
       res.cookie('token', token);
       res.send(authUser);
-    })
+    });
   });
 });
+
+router.post('/login', function(req, res){
+  User.authenticate(req.body, function(err, authUser){
+    if (err) return res.status(400).send(err);
+    var token = authUser.generateToken();
+    res.cookie('token', token);
+    res.send(authUser);
+  });
+});
+
+router.post('/logout', authorize, function(req, res){
+  res.clearCookie('token');
+  res.send('Logging out');
+})
 
 
 module.exports = router;

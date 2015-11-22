@@ -23,8 +23,8 @@ userSchema.methods.generateToken = function(){
 
 userSchema.methods.login = function(cb){
   User.authenticate(this, function(err, authUser){
-    if (err) return res.status(400).send(err);
-    cb(null, authUser)
+    if (err) return cb(err);
+    cb(null, authUser);
   });
 };
 

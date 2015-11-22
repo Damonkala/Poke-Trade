@@ -1,0 +1,38 @@
+#background {
+  background-image: url('http://pre07.deviantart.net/c7fa/th/pre/f/2011/101/b/8/cinders___concept_art_by_vinegar-d3dqrmx.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+}
+
+.overlay {
+  background: rgba(232, 232, 232, 0.3)
+}
+
+#welcomeArea {
+  /*height: 15vh;*/
+  text-align: center;
+  color: white;
+  margin-bottom: 5%;
+  padding: 1%;
+}
+
+#navArea {
+  padding: 2%;
+  margin-right: 5%
+}
+
+#displayArea {
+  height: 80vh;
+  padding: 2%;
+  display: none;
+}
+
+.display {
+  display: none;
+}
+
+button {
+  margin: 3%;
+}

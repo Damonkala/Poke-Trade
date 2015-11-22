@@ -17,8 +17,6 @@ function start(e){
   if (userPrefs.name){
     $.post('/users/update', userPrefs)
     .done(function(authUser){
-      console.log(authUser);
-      debugger;
       window.location.replace(`/homes/${authUser._id}`);
     })
     .fail(function(err){

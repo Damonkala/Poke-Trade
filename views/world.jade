@@ -1,0 +1,23 @@
+extends layout
+
+block css
+  link(rel='stylesheet', href='../css/world.css')
+
+block content
+  .container-fluid
+    .row
+      .col-xs-12.housesArea
+        button.btn.btn-default#home Home
+        button.btn.btn-default#logout Logout
+        each user in users
+          if (user._id.toString() === me._id.toString())
+            .img(data-id= me._id.toString())
+              h3 My House
+              img(src="http://img06.deviantart.net/6038/i/2012/290/f/d/png_rock_house_by_paradise234-d5i30hm.png")      
+          else
+            .img(data-id= user._id.toString())
+              h3 #{user.name}'s House
+              img(src="http://img06.deviantart.net/6038/i/2012/290/f/d/png_rock_house_by_paradise234-d5i30hm.png")      
+          
+block js
+  script(src='../js/world.js')

@@ -1,0 +1,43 @@
+.housesArea {
+  background-image: url('http://pre09.deviantart.net/a9f5/th/pre/i/2011/188/6/b/grassy_field_by_alexlinde-d3lbg9h.jpg');
+  background-size: cover;
+  background-repeat: repeat-x;
+  height: 100vh;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.img {
+  position: relative;
+  display: inline-block;
+  width: 25vw;
+  text-align: center;
+  margin-top: 25%;
+}
+
+.img h3 {
+  background: rgba(0, 109, 255, 0.3);
+  color: white;
+  margin: 0 auto;
+  width: 40%;
+  padding: 2% 0;
+  border-radius: 10px;
+}
+.img img {
+  width: 100%;
+  display: inline;
+}
+
+
+button {
+  position: fixed;
+  top: 30%
+}
+
+#home {
+  left: 40%;
+}
+
+#logout {
+  left: 60%;
+}

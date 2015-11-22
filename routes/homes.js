@@ -4,7 +4,14 @@ var authorize = require('../config/auth');
 
 var User = require('../models/user')
 
-/* GET home page. */
+router.get('/world', authorize, function(req, res){
+  User.find({}, function(err, users){
+    if (err) res.send(err);
+    console.log(req.user._id);
+    res.render('world', {users: users, me: req.user});
+  });
+});
+
 router.get('/:id', authorize, function(req, res) {
   User
     .findById(req.params.id)
@@ -14,8 +21,9 @@ router.get('/:id', authorize, function(req, res) {
     })
     .exec(function(err, user){
       console.log('populated user?', user);
-      res.render('home', {user: user});
+      res.render('home', {user: user, me: req.user});
     })
 });
+
 
 module.exports = router;

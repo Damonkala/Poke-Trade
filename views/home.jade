@@ -4,6 +4,61 @@ block css
   link(rel='stylesheet', href='../css/home.css')
 
 block content
-  h1 This is the home page
+  - var owner = user._id.toString()
+  - var self = me._id.toString()
+  .container-fluid#background
+    .row
+      .col-xs-12#welcomeArea.overlay
+        if (owner === self)
+          h1 Welcome home, #{user.name}!
+        else
+          h1 Welcome to #{user.name}'s home!
+        .row
+          .col-xs-6.col-xs-offset-3
+            button.btn.btn-default#worldMap World Map
+            button.btn.btn-default#getNewPokemon Get New Pokemon
+            button.btn.btn-default#logout Logout
+      
+      .col-xs-4#navArea.overlay
+        ul.nav.nav-pills.nav-stacked
+          if (owner === self)
+            li(role='presentation').viewInfo
+              a.btn.btn-default View Your Pokemon
+            li(role='presentation').viewInfo
+              a.btn.btn-default Pending Trades
+            li(role='presentation').viewInfo
+              a.btn.btn-default Trade Offers
+          else
+            li(role='presentation').viewInfo
+              a.btn.btn-default View #{user.name}'s Pokemon
+              
+      .col-xs-7#displayArea.overlay
+        if (owner === self)
+          .display
+            h1 Your Pokemon:
+            .row
+              each pokemon in user.pokemons
+                .col-xs-3
+                  - var pokemonName = pokemon.name
+                  h3.pokemon= pokemonName
+          .display
+            h1 Your Trades:
+            .row
+              .col-xs-3
+                h1 Some trade here
+          .display
+            h1 Your Offers:
+            .row
+              .col-xs-3
+                h1 Some offer here
+        else
+          .display
+            h1 #{user.name}'s Pokemon:
+            .row
+              each pokemon in user.pokemons
+                .col-xs-3
+                  - var pokemonName = pokemon.name
+                  h3.pokemon= pokemonName
+          
 block js
   script(src='../js/home.js')
