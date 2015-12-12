@@ -20,7 +20,7 @@ router.post('/accept/:id', function (req, res) {
 	Trade.accept(req.params.id, function(err, trade) {
 		var guestPokemon = trade.guestPokemon;
 			console.log(req.params.id);
-		Trade.findByIdAndRemove(JSON.parse(req.params.id), function(err, removed){
+		Trade.findByIdAndRemove((req.params.id), function(err, removed){
 			console.log("REMOVED:", removed);
 			res.send(guestPokemon);
 		})

@@ -19,15 +19,6 @@ function generatePokemon() {
   $.get('https://pokeapi.co/api/v1/pokedex/1/')
     .done(function(data){
       pokedex = data;
-          // var intervalID = window.setInterval(function(){
-          //   generatePokemon();
-          //
-          // }, 5000);
-          //
-          // window.setTimeout(function(){
-          //   window.clearInterval(intervalID);
-          // }, 50000);
-
       let randomPokemonNumber = Math.floor(Math.random() * 778);
       let randomPokemonName = pokedex.pokemon[randomPokemonNumber].name;
 
@@ -35,11 +26,6 @@ function generatePokemon() {
 
       $.get(pokemonData)
         .done(function(data){
-
-            // let $attack = $('<p>').text('Attack Power: ' + data.attack);
-            // let $defense = $('<p>').text('Defense Power: ' + data.defense);
-            // let $hp = $('<p>').text('HP: ' + data.hp);
-
         let pokemonSprite = 'https://pokeapi.co/' + data.sprites[0].resource_uri;
 
         $.get(pokemonSprite)
@@ -61,14 +47,6 @@ function generatePokemon() {
             .fail(function(err){
               console.log(err);
             })
-            // pokemonRef.child(randomPokemonName).set({
-            //   name: randomPokemonName,
-            //   number: randomPokemonNumber,
-            //   image: pokemonImage,
-            //   position: pokemonLocation
-            // });
-
-
 
           }).fail(function(error){
             console.log('Failed at sprite retrieval. Error: ', error);
